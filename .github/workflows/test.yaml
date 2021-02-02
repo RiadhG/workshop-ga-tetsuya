@@ -1,6 +1,6 @@
 name: Tests
 on:
-  push:
+  pull_request:
     branches:
       - main
       - dev
@@ -13,19 +13,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v2
-        run: mkdir -p ./artifact
       
       - name: Run Tests
         shell: bash
         run: make tests_run
       
       - name: Get Coverage
+        if: ${{ always() }}
         shell: bash
-        run: make coverage > ./artifact/coverage.txt
+        run: make coverage > coverage_output
+        
+      - name: Upload Coverage Artifact
+        if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
-          name: my-artifact
-          path: ./artifact/coverage.txt
+          name: coverage_output
+          path: ./coverage_output
