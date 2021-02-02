@@ -9,7 +9,7 @@ on:
 jobs:
   unit-tests:
     runs-on: ubuntu-20.04
-    container: docker://epitechContent/epitest-docker
+    container: docker://epitechcontent/epitest-docker
     steps:
       - name: Checkout
         uses: actions/checkout@v2
