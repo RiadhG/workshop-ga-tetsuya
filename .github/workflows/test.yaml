@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2
+        run: mkdir -p ./artifact
       
       - name: Run Tests
         shell: bash
@@ -20,7 +24,8 @@ jobs:
       
       - name: Get Coverage
         shell: bash
-        run: make coverage
-
-      - name: Upload a Build Artifact
+        run: make coverage > ./artifact/coverage.txt
         uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: ./artifact/coverage.txt
