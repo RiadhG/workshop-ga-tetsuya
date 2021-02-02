@@ -4,9 +4,12 @@ on:
     branches:
       - main
       - dev
+      - master
+
 jobs:
   hello-world:
     runs-on: ubuntu-20.04
     steps:
-      - run: echo Welcome to the Github Actions workshop !
+      - name: Say Hello World
         shell: bash
+        run: echo Welcome to the Github Actions workshop !
