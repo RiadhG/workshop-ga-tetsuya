@@ -23,7 +23,7 @@ jobs:
         shell: bash
         run: make coverage > coverage_output
         
-      - name: Upload Coverage Artifact
+      - name: Upload coverage artifact
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
