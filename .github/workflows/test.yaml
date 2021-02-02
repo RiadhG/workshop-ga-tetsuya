@@ -21,3 +21,6 @@ jobs:
       - name: Get Coverage
         shell: bash
         run: make coverage
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2
